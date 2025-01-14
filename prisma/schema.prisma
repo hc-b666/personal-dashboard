@@ -1,0 +1,46 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Project {
+  id String @id @default(uuid())
+
+  title       String
+  description String
+  githubLink  String      @map("github_link")
+  type        ProjectType @relation(fields: [projectTypeId], references: [id])
+  languages   Language[]
+  date        DateTime
+  isPublic    Boolean     @map("is_public")
+
+  userId String
+
+  createdAt     DateTime @default(now())
+  projectTypeId String
+}
+
+model ProjectType {
+  id String @id @default(uuid())
+
+  name String @unique
+
+  createdAt DateTime @default(now())
+
+  projects Project[]
+}
+
+model Language {
+  id String @id @default(uuid())
+
+  name String @unique
+  icon String
+
+  createdAt DateTime @default(now())
+
+  projects Project[]
+}
