@@ -10,6 +10,31 @@ import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import { Prisma } from "@prisma/client";
 
+export async function getProjects() {
+  try {
+    const { userId } = await auth();
+    if (!userId) {
+      return { success: false, message: "Unauthorized" };
+    }
+
+    const projects = await prisma.project.findMany({
+      include: {
+        languages: true,
+        type: true,
+      },
+      where: {
+        userId,
+        isPublic: true,
+      },
+    });
+
+    return { success: true, projects };
+  } catch (err) {
+    console.log(err);
+    return { success: false, message: "Something went wrong" };
+  }
+}
+
 export async function createProject(formData: CreateProjectDto) {
   try {
     const { userId } = await auth();
