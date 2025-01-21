@@ -4,6 +4,7 @@ import morgan from "morgan";
 
 import { corsConfig } from "@/config/cors";
 import router from "@/router";
+import { endpointNotFound, errorMiddleware } from "@/utils/error.middleware";
 
 export const createApp = () => {
 	const app = express();
@@ -13,6 +14,9 @@ export const createApp = () => {
 	app.use(morgan("tiny"));
 
 	app.use("/api", router);
+
+	app.use(endpointNotFound);
+	app.use(errorMiddleware);
 
 	return app;
 };
