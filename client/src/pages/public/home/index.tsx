@@ -1,6 +1,6 @@
 export default function HomePage() {
   return (
-    <div>
+    <div className="container flex-grow">
       <div>HomePage</div>
     </div>
   );

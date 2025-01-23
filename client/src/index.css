@@ -6,3 +6,7 @@
     --radius: 0.5rem
   }
 }
+
+.sidebar-link {
+  @apply text-base py-2 px-4 rounded-sm flex items-center gap-1 hover:bg-zinc-50 duration-300;
+}
