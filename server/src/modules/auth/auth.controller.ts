@@ -72,7 +72,7 @@ class AuthController extends Controller {
 
 	login: RequestHandler = async (req, res, next) => {
 		try {
-			const data = this.validateBody(req.body, loginSchema);
+			const data = this.validateBody(req, loginSchema);
 			const user = await this.findUser(data);
 			const response = this.loginResponse(user);
 
