@@ -10,11 +10,11 @@ export default defineConfig({
     },
   },
   preview: {
-    port: 5050,
+    port: 5173,
     strictPort: true,
   },
   server: {
-    port: 5050,
+    port: 5173,
     host: true,
     origin: "http://0.0.0.0:5050",
   },

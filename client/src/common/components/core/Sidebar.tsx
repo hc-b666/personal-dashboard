@@ -20,6 +20,7 @@ export default function Sidebar() {
       <div className="px-2 flex flex-col gap-1">
         {sidebarLinks.map((link) => (
           <NavLink
+            key={link.name}
             to={link.to}
             className={({ isActive }) =>
               `sidebar-link ${isActive && "bg-zinc-100"}`
