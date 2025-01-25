@@ -18,10 +18,15 @@ model User {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  projects Project[]
 }
 
 model Project {
   id Int @id @default(autoincrement())
+
+  userId Int
+  user   User @relation(fields: [userId], references: [id])
 
   title       String
   description String?

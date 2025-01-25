@@ -1,15 +1,15 @@
-import { User } from "@prisma/client";
 import argon2 from "argon2";
 
-import prisma from "@/utils/prisma";
+import Service from "@/utils/service";
 
 import { RegisterDto } from "./dto/register.dto";
 
-class AuthService {
-	private prisma = prisma;
+class AuthService extends Service {
 	private static instance: AuthService;
 
-	private constructor() {}
+	private constructor() {
+		super();
+	}
 
 	static getInstance() {
 		if (!this.instance) {

@@ -62,8 +62,6 @@ class AuthController extends Controller {
 			refreshToken,
 			user: {
 				id: user.id,
-				firstName: user.firstName,
-				lastName: user.lastName,
 				email: user.email,
 			},
 			message: "Successfully logged in!",

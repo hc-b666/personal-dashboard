@@ -27,7 +27,7 @@ const checkUser = async (decoded: ITokenPayload): Promise<User> => {
 	return user;
 };
 
-const authenticate: RequestHandler = async (req, res, next) => {
+export const authenticate: RequestHandler = async (req, res, next) => {
 	try {
 		const decoded = validateAuthHeader(req.headers.authorization);
 		const user = await checkUser(decoded);
