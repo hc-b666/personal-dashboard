@@ -1,7 +1,7 @@
 import { RequestHandler } from "express";
 import createHttpError from "http-errors";
 
-import Controller from "@/utils/controller";
+import Controller from "../../utils/controller";
 
 import LanguageService from "./language.service";
 

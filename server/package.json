@@ -4,7 +4,9 @@
 	"description": "Personal dashboard server",
 	"main": "index.js",
 	"scripts": {
-		"dev": "nodemon --exec ts-node -r tsconfig-paths/register src/server.ts"
+		"dev": "nodemon --exec ts-node -r tsconfig-paths/register src/server.ts",
+		"build": "prisma generate && tsc",
+		"start": "node -r tsconfig-paths/register dist/server.js"
 	},
 	"keywords": [
 		"server",

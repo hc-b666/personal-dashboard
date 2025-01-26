@@ -2,7 +2,7 @@ import { User } from "@prisma/client";
 import { RequestHandler } from "express";
 import createHttpError from "http-errors";
 
-import { AuthService } from "@/modules/auth";
+import { AuthService } from "../modules/auth";
 
 import TokenService, { ITokenPayload } from "./jwt";
 

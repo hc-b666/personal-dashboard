@@ -3,8 +3,8 @@ import argon2 from "argon2";
 import { RequestHandler } from "express";
 import createHttpError from "http-errors";
 
-import Controller from "@/utils/controller";
-import TokenService from "@/utils/jwt";
+import Controller from "../../utils/controller";
+import TokenService from "../../utils/jwt";
 
 import AuthService from "./auth.service";
 import { type LoginDto, loginSchema } from "./dto/login.dto";
