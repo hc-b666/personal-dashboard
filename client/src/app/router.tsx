@@ -11,6 +11,7 @@ const LoginPage = lazy(() => import("@/pages/auth/login"));
 const RegisterPage = lazy(() => import("@/pages/auth/register"));
 
 const ProfilePage = lazy(() => import("@/pages/private/profile"));
+const AboutMePage = lazy(() => import("@/pages/private/about-me"));
 const CreateProjectPage = lazy(() => import("@/pages/private/create-project"));
 const ProjectsPage = lazy(() => import("@/pages/private/projects"));
 const PublicApisPage = lazy(() => import("@/pages/private/public-apis"));
@@ -49,6 +50,7 @@ export default function Router() {
               <PrivateLayout>
                 <Routes>
                   <Route path="/profile" element={<ProfilePage />} />
+                  <Route path="/about-me" element={<AboutMePage />} />
                   <Route
                     path="/projects/create"
                     element={<CreateProjectPage />}
