@@ -87,7 +87,7 @@ function Preview({ code }: { code: string }) {
             <ul className="list-disc list-inside ml-4" {...props} />
           ),
           li: ({ node, ...props }) => <li className="mb-1" {...props} />,
-          code: ({ node, inline, className, children, ...props }) => {
+          code: ({ node, inline, className, children, ...props }: any) => {
             const match = /language-(\w+)/.exec(className || "");
             return !inline && match ? (
               <SyntaxHighlighter
