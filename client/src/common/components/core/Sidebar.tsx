@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { FolderGit, User } from "lucide-react";
+import { TbApi } from "react-icons/tb";
 
 const sidebarLinks = [
   {
@@ -11,6 +12,11 @@ const sidebarLinks = [
     name: "Projects",
     to: "/main/projects",
     icon: FolderGit,
+  },
+  {
+    name: "Public Apis",
+    to: "/main/public-apis",
+    icon: TbApi,
   },
 ];
 
