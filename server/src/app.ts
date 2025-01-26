@@ -2,9 +2,9 @@ import cors from "cors";
 import express from "express";
 import morgan from "morgan";
 
-import { corsConfig } from "@/config/cors";
-import router from "@/router";
-import { endpointNotFound, errorMiddleware } from "@/utils/error.middleware";
+import { corsConfig } from "./config/cors";
+import router from "./router";
+import { endpointNotFound, errorMiddleware } from "./utils/error.middleware";
 
 export const createApp = () => {
 	const app = express();

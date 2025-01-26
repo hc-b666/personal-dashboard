@@ -1,7 +1,7 @@
 import { RequestHandler } from "express";
 import createHttpError from "http-errors";
 
-import Controller from "@/utils/controller";
+import Controller from "../../utils/controller";
 
 import { updateUserInfoSchema } from "./dto/update.dto";
 import UserService from "./user.service";

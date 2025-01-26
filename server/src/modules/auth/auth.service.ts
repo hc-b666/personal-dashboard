@@ -1,6 +1,6 @@
 import argon2 from "argon2";
 
-import Service from "@/utils/service";
+import Service from "../../utils/service";
 
 import { RegisterDto } from "./dto/register.dto";
 

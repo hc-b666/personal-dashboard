@@ -1,7 +1,7 @@
 import { Language } from "@prisma/client";
 
-import { Result } from "@/@types/result";
-import Service from "@/utils/service";
+import { Result } from "../../@types/result";
+import Service from "../../utils/service";
 
 class LanguageService extends Service {
 	private static instance: LanguageService;

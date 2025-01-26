@@ -1,10 +1,10 @@
 import { Router } from "express";
 
-import { authRoutes } from "@/modules/auth";
-import { languageRoutes } from "@/modules/languages";
-import { projectRoutes } from "@/modules/projects";
-import { projectTypeRoutes } from "@/modules/projectType";
-import { userRoutes } from "@/modules/user";
+import { authRoutes } from "./modules/auth";
+import { languageRoutes } from "./modules/languages";
+import { projectRoutes } from "./modules/projects";
+import { projectTypeRoutes } from "./modules/projectType";
+import { userRoutes } from "./modules/user";
 
 const router = Router();
 

@@ -1,5 +1,5 @@
-import { Result } from "@/@types/result";
-import Service from "@/utils/service";
+import { Result } from "../../@types/result";
+import Service from "../../utils/service";
 
 import { UpdateUserInfoDto } from "./dto/update.dto";
 

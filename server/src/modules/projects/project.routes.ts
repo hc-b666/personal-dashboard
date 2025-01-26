@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-import { authenticate } from "@/utils/auth.middleware";
+import { authenticate } from "../../utils/auth.middleware";
 
 import controller from "./project.controller";
 

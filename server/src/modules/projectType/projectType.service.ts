@@ -1,7 +1,7 @@
 import { ProjectType } from "@prisma/client";
 
-import { Result } from "@/@types/result";
-import Service from "@/utils/service";
+import { Result } from "../../@types/result";
+import Service from "../../utils/service";
 
 class ProjectTypeService extends Service {
 	private static instance: ProjectTypeService;
