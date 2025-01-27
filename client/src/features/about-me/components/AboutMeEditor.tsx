@@ -5,16 +5,33 @@ import rehypeRaw from "rehype-raw";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import CodeMirror from "@uiw/react-codemirror";
-
 import { Button } from "@/common/components/ui/button";
+import { AboutContent } from "../types";
+import { useUpdateAboutContentMutation } from "../services/aboutApi";
+import { toast } from "@/common/hooks/use-toast";
 
-export default function AboutMeEditor() {
+interface Props {
+  about: AboutContent;
+}
+
+export default function AboutMeEditor({ about }: Props) {
   const [tab, setTab] = useState<"preview" | "code">("code");
-  const [code, setCode] = useState("# Hello, *World*!");
+  const [code, setCode] = useState(about.content);
+  const [updateAboutContent] = useUpdateAboutContentMutation();
 
   const handleChange = useCallback((value: string) => {
     setCode(value);
   }, []);
+
+  const handleSave = async () => {
+    try {
+      const res = await updateAboutContent({ content: code }).unwrap();
+      toast({ description: res.message });
+    } catch (err) {
+      console.log(err);
+      toast({ variant: "destructive", description: (err as any).data.message });
+    }
+  };
 
   return (
     <div className="flex-grow flex flex-col gap-5">
@@ -43,7 +60,9 @@ export default function AboutMeEditor() {
         )}
       </div>
 
-      <Button className="self-end">Save</Button>
+      <Button className="self-end" onClick={handleSave}>
+        Save
+      </Button>
     </div>
   );
 }
@@ -59,20 +78,21 @@ function Preview({ code }: { code: string }) {
             <h1 className="text-2xl font-bold" {...props} />
           ),
           h2: ({ node, ...props }) => (
-            <h1 className="text-xl font-semibold" {...props} />
+            <h2 className="text-xl font-semibold" {...props} />
           ),
           h3: ({ node, ...props }) => (
-            <h1 className="text-lg font-medium" {...props} />
+            <h3 className="text-lg font-medium" {...props} />
           ),
           h4: ({ node, ...props }) => (
-            <h1 className="text-base font-medium" {...props} />
+            <h4 className="text-base font-medium" {...props} />
           ),
           h5: ({ node, ...props }) => (
-            <h1 className="text-sm font-medium" {...props} />
+            <h5 className="text-sm font-medium" {...props} />
           ),
           h6: ({ node, ...props }) => (
-            <h1 className="text-xs font-medium" {...props} />
+            <h6 className="text-xs font-medium" {...props} />
           ),
+          p: ({ node, ...props }) => <p className="mb-4" {...props} />,
           a: ({ node, ...props }) => {
             return (
               <a
@@ -84,7 +104,7 @@ function Preview({ code }: { code: string }) {
             );
           },
           ul: ({ node, ...props }) => (
-            <ul className="list-disc list-inside ml-4" {...props} />
+            <ul className="list-disc list-inside ml-4 mb-4" {...props} />
           ),
           li: ({ node, ...props }) => <li className="mb-1" {...props} />,
           code: ({ node, inline, className, children, ...props }: any) => {

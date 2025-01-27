@@ -2,7 +2,7 @@
 	"name": "server",
 	"version": "1.0.0",
 	"description": "Personal dashboard server",
-	"main": "index.js",
+	"main": "src/server.ts",
 	"scripts": {
 		"dev": "nodemon --exec ts-node -r tsconfig-paths/register src/server.ts",
 		"build": "prisma generate && tsc",

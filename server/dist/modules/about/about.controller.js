@@ -1,0 +1,52 @@
+"use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const http_errors_1 = __importDefault(require("http-errors"));
+const controller_1 = __importDefault(require("../../utils/controller"));
+const about_service_1 = __importDefault(require("./about.service"));
+const update_dto_1 = require("./dto/update.dto");
+class AboutController extends controller_1.default {
+    constructor() {
+        super();
+        this.findByUserId = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
+            try {
+                const userId = this.validateId(req, "userId");
+                const result = yield this.aboutService.findByUserId(userId);
+                if (!result.success) {
+                    throw (0, http_errors_1.default)(500, "Something went wrong while fetching");
+                }
+                res.status(200).json(result.data);
+            }
+            catch (err) {
+                next(err);
+            }
+        });
+        this.update = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
+            try {
+                const { id } = req.user;
+                const dto = this.validateBody(req, update_dto_1.updateAboutContentSchema);
+                const result = yield this.aboutService.update(id, dto);
+                if (!result.success) {
+                    throw (0, http_errors_1.default)(500, "Something went wrong while updating");
+                }
+                res.status(200).json({ success: "Successfully updated" });
+            }
+            catch (err) {
+                next(err);
+            }
+        });
+        this.aboutService = about_service_1.default.getInstance();
+    }
+}
+exports.default = new AboutController();

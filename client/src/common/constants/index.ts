@@ -25,3 +25,17 @@ export const sidebarLinks = [
     icon: TbApi,
   },
 ];
+
+export const publicApis = [
+  {
+    label:
+      "Your about content [Recommended to use React-markdown for this content with your own customization]",
+    id: "about",
+    url: `${BACKEND_BASE_URL}/api/about`,
+  },
+  {
+    label: "Your public projects API",
+    id: "projects-api",
+    url: `${BACKEND_BASE_URL}/api/projects`,
+  },
+];

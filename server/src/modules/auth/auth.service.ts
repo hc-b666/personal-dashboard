@@ -33,10 +33,17 @@ class AuthService extends Service {
 		try {
 			const passwordHash = await argon2.hash(dto.password);
 
-			await this.prisma.user.create({
+			const user = await this.prisma.user.create({
 				data: {
 					email: dto.email,
 					password: passwordHash,
+				},
+			});
+
+			await this.prisma.about.create({
+				data: {
+					userId: user.id,
+					content: `My email is ${dto.email}`,
 				},
 			});
 		} catch (err) {

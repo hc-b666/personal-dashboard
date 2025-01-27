@@ -40,10 +40,16 @@ class AuthService extends service_1.default {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const passwordHash = yield argon2_1.default.hash(dto.password);
-                yield this.prisma.user.create({
+                const user = yield this.prisma.user.create({
                     data: {
                         email: dto.email,
                         password: passwordHash,
+                    },
+                });
+                yield this.prisma.about.create({
+                    data: {
+                        userId: user.id,
+                        content: `My email is ${dto.email}`,
                     },
                 });
             }
