@@ -8,9 +8,9 @@ interface Props {
 
 export default function PrivateLayout({ children }: Props) {
   return (
-    <div className="w-full min-h-screen flex flex-col gap-10">
+    <div className="w-full min-h-screen flex flex-col gap-10 text-black dark:text-white bg-white dark:bg-black">
       <Navbar />
-      <div className="container flex-grow grid grid-cols-5 gap-10 border rounded-md">
+      <div className="container flex-grow grid grid-cols-5 gap-10 border rounded-md border-zinc-300 dark:border-zinc-700">
         <Sidebar />
         {children}
       </div>

@@ -1,5 +1,5 @@
 import { baseApi } from "@/common/services/api";
-import { ServerResponse } from "@/common/types/api.types";
+import { ServerResponse } from "@/common/types";
 import { CreateProjectRequest, Project } from "../types";
 
 export const projectsApi = baseApi.injectEndpoints({

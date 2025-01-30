@@ -9,7 +9,7 @@ export default function AboutMePage() {
   });
 
   return (
-    <div className="col-span-4 my-4 border rounded-md p-10 flex flex-col gap-5">
+    <div className="col-span-4 my-4 border rounded-md p-10 flex flex-col gap-5 border-zinc-300 dark:border-zinc-700">
       <h1 className="text-xl font-semibold">About Me</h1>
       {isSuccess && <AboutMeEditor about={data} />}
     </div>

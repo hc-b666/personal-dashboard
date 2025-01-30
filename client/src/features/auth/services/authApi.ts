@@ -1,6 +1,6 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { baseQuery } from "@/common/services/api";
-import { ServerResponse } from "@/common/types/api.types";
+import { ServerResponse } from "@/common/types";
 import { LoginDto, RegisterDto, User } from "../types";
 
 interface LoginResponse extends ServerResponse {

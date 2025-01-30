@@ -17,7 +17,7 @@ export default function ProjectCard({ project }: Props) {
 
       {project.description && (
         <p className="text-xs text-grey mb-3">
-          {truncateText(project.description, 50)}
+          {truncateText(project.description, 100)}
         </p>
       )}
 

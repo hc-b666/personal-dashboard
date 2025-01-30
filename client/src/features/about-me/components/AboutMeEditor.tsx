@@ -5,6 +5,7 @@ import { AboutContent } from "../types";
 import { useUpdateAboutContentMutation } from "../services/aboutApi";
 import { toast } from "@/common/hooks/use-toast";
 import ReactMarkdownComponent from "@/common/components/core/react-markdown";
+import { useTheme } from "@/common/providers/theme-provider";
 
 interface Props {
   about: AboutContent;
@@ -78,13 +79,15 @@ function Code({
   code: string;
   handleChange: (value: string) => void;
 }) {
+  const { theme } = useTheme();
+
   return (
     <div className="h-full">
       <CodeMirror
         value={code}
         height="100%"
         className="h-full"
-        theme={"light"}
+        theme={theme === "light" ? "light" : "dark"}
         onChange={handleChange}
       />
     </div>

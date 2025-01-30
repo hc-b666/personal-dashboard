@@ -63,7 +63,10 @@ export default function MultiSelect<T>({
           ))}
         </div>
       )}
-      <div ref={multiSelectRef} className="w-full border rounded relative">
+      <div
+        ref={multiSelectRef}
+        className="w-full border border-zinc-300 dark:border-zinc-700 rounded relative"
+      >
         <div
           onClick={() => setOpen(!open)}
           className="pl-4 pr-2 py-1 w-full flex items-center justify-between cursor-pointer"
@@ -76,7 +79,7 @@ export default function MultiSelect<T>({
 
         <div
           className={`
-          absolute top-full w-full z-10 border rounded mt-1 
+          absolute top-full w-full z-10 border border-zinc-300 dark:border-zinc-700 rounded mt-1 
           transform origin-top transition-all duration-300 ease-out
           ${
             open
@@ -85,12 +88,12 @@ export default function MultiSelect<T>({
           }
         `}
         >
-          <div className="max-h-[200px] bg-white overflow-y-auto py-2">
+          <div className="max-h-[200px] bg-white dark:bg-zinc-900 overflow-y-auto py-2">
             {options.map((opt) => (
               <div
                 key={getValue(opt)}
                 onClick={() => handleAddOption(opt)}
-                className={`py-1 px-4 hover:bg-gray-100 cursor-pointer flex items-center justify-between ${
+                className={`py-1 px-4 hover:bg-zinc-100 dark:hover:bg-zinc-800 cursor-pointer flex items-center justify-between ${
                   selectedIds.includes(getValue(opt)) && "bg-gray-100"
                 }`}
               >

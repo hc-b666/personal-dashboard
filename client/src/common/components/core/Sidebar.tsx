@@ -7,14 +7,14 @@ export default function Sidebar() {
   const { user } = useAuth();
 
   return (
-    <aside className="col-span-1 my-4 py-5 border rounded-md">
+    <aside className="col-span-1 my-4 py-5 border border-zinc-300 dark:border-zinc-700 rounded-md bg-white dark:bg-black">
       <div className="h-full px-2 flex flex-col gap-1">
         {sidebarLinks.map((link) => (
           <NavLink
             key={link.name}
             to={link.to}
             className={({ isActive }) =>
-              `sidebar-link ${isActive && "bg-zinc-100"}`
+              `sidebar-link ${isActive && "bg-zinc-100 dark:bg-zinc-900"}`
             }
           >
             <link.icon className="w-5 h-5" />
