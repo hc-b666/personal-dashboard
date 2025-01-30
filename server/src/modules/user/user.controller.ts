@@ -29,6 +29,21 @@ class UserController extends Controller {
 		}
 	};
 
+	getUserInfo: RequestHandler = async (req, res, next) => {
+		try {
+			const userId = this.validateId(req, "userId");
+
+			const result = await this.userService.getUserInfo(userId);
+			if (!result.success) {
+				throw createHttpError(500, "Something went wrong");
+			}
+
+			res.status(200).json(result.data);
+		} catch (err) {
+			next(err);
+		}
+	};
+
 	updateInfo: RequestHandler = async (req, res, next) => {
 		try {
 			const userId = req.user.id;

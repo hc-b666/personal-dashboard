@@ -4,6 +4,7 @@ import RouteGuard from "./RouteGuard";
 import PublicLayout from "@/pages/public/public-layout";
 import AuthLayout from "@/pages/auth/auth-layout";
 import PrivateLayout from "@/pages/private/private-layout";
+import PortfolioLayout from "@/portfolio/portfolio-layout";
 
 const HomePage = lazy(() => import("@/pages/public/home"));
 
@@ -15,6 +16,9 @@ const AboutMePage = lazy(() => import("@/pages/private/about-me"));
 const CreateProjectPage = lazy(() => import("@/pages/private/create-project"));
 const ProjectsPage = lazy(() => import("@/pages/private/projects"));
 const PublicApisPage = lazy(() => import("@/pages/private/public-apis"));
+
+const PortfolioLandingPage = lazy(() => import("@/portfolio/pages/Home"));
+const PortfolioProjectsPage = lazy(() => import("@/portfolio/pages/Projects"));
 
 export default function Router() {
   return (
@@ -59,6 +63,18 @@ export default function Router() {
                   <Route path="/public-apis" element={<PublicApisPage />} />
                 </Routes>
               </PrivateLayout>
+            }
+          />
+
+          <Route
+            path="/portfolio/:userId/*"
+            element={
+              <PortfolioLayout>
+                <Routes>
+                  <Route path="/" element={<PortfolioLandingPage />} />
+                  <Route path="/projects" element={<PortfolioProjectsPage />} />
+                </Routes>
+              </PortfolioLayout>
             }
           />
         </Routes>
