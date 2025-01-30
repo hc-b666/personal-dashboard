@@ -16,16 +16,14 @@ interface ProfileFormBody {
 export default function ProfileForm() {
   const { user } = useAuth();
   const navigate = useNavigate();
-  const { data, refetch } = useFindUserQuery({}, {
-    refetchOnMountOrArgChange: true,
-  });
+  const { data, isSuccess, refetch } = useFindUserQuery({});
   const [updateInfo] = useUpdateInfoMutation();
 
   const { register, handleSubmit, reset } = useForm<ProfileFormBody>({
     defaultValues: useMemo(
       () => ({
-        firstname: data?.firstName || "",
-        lastname: data?.lastName || "",
+        firstname: isSuccess ? data.firstName : "",
+        lastname: isSuccess ? data.lastName : "",
       }),
       [data]
     ),

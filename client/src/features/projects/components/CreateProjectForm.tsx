@@ -19,13 +19,9 @@ import { toast } from "@/common/hooks/use-toast";
 import { useCreateProjectMutation } from "../services/projectsApi";
 
 export default function CreateProjectForm() {
-  const { data: langs, isSuccess: successLang } = useFindAllLanguagesQuery(
-    {},
-    { refetchOnMountOrArgChange: true }
-  );
+  const { data: langs, isSuccess: successLang } = useFindAllLanguagesQuery({});
   const { data: types, isSuccess: successType } = useFindAllProjectTypesQuery(
-    {},
-    { refetchOnMountOrArgChange: true }
+    {}
   );
   const [createProject, { isLoading }] = useCreateProjectMutation();
 

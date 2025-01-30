@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  client:
+    build: 
+      context: ./client
+      dockerfile: Dockerfile
+    ports:
+      - "5173:5173"
+    environment: 
+      - VITE_BACKEND_URL=${BACKEND_URL}
+    env_file:
+      - .env
+    volumes:
+      - ./client:/app/client
+      - /app/client/node_modules
+    depends_on:
+      - server
+
+  server:
+    build: 
+      context: ./server
+      dockerfile: Dockerfile
+    ports:
+      - "8989:8989"
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
+      - PORT=${PORT}
+      - TOKEN_KEY=${TOKEN_KEY}
+    env_file:
+      - .env
