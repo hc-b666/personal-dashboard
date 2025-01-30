@@ -1,6 +1,6 @@
 import { baseApi } from "@/common/services/api";
 import { AboutContent } from "../types";
-import { ServerResponse } from "@/common/types/api.types";
+import { ServerResponse } from "@/common/types";
 
 export const aboutApi = baseApi.injectEndpoints({
   endpoints: (build) => ({

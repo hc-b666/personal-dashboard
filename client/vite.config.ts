@@ -16,7 +16,19 @@ export default defineConfig({
   server: {
     port: 5173,
     host: true,
-    origin: "http://0.0.0.0:5050",
+    origin: "http://0.0.0.0:5173",
+  },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          reactMarkdown: ["react-markdown"],
+          remarkGfm: ["remark-gfm"],
+          rehypeRaw: ["rehype-raw"],
+          syntaxHighlighter: ["react-syntax-highlighter"],
+        },
+      },
+    },
+    chunkSizeWarningLimit: 1000,
   },
 });
-

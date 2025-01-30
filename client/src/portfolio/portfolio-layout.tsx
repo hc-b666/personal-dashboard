@@ -7,7 +7,7 @@ interface Props {
 
 export default function PortfolioLayout({ children }: Props) {
   return (
-    <div className="portfolio-base min-h-screen flex flex-col 2xl:justify-start text-black dark:text-white bg-white dark:bg-black relative">
+    <div className="min-h-screen flex flex-col 2xl:justify-start text-black dark:text-white bg-white dark:bg-black relative">
       <Navbar />
       {children}
       <Footer />

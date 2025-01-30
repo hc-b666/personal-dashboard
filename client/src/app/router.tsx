@@ -5,6 +5,9 @@ import PublicLayout from "@/pages/public/public-layout";
 import AuthLayout from "@/pages/auth/auth-layout";
 import PrivateLayout from "@/pages/private/private-layout";
 import PortfolioLayout from "@/portfolio/portfolio-layout";
+import GoBack from "@/common/components/core/GoBack";
+
+const NotFoundPage = lazy(() => import("@/pages/not-found"));
 
 const HomePage = lazy(() => import("@/pages/public/home"));
 
@@ -31,6 +34,7 @@ export default function Router() {
               <PublicLayout>
                 <Routes>
                   <Route path="/" element={<HomePage />} />
+                  <Route path="*" element={<NotFoundPage />} />
                 </Routes>
               </PublicLayout>
             }
@@ -43,6 +47,7 @@ export default function Router() {
                 <Routes>
                   <Route path="/register" element={<RegisterPage />} />
                   <Route path="/login" element={<LoginPage />} />
+                  <Route path="*" element={<NotFoundPage />} />
                 </Routes>
               </AuthLayout>
             }
@@ -61,6 +66,14 @@ export default function Router() {
                   />
                   <Route path="/projects" element={<ProjectsPage />} />
                   <Route path="/public-apis" element={<PublicApisPage />} />
+                  <Route
+                    path="*"
+                    element={
+                      <div className="p-10 flex flex-col gap-3">
+                        Not found <GoBack />
+                      </div>
+                    }
+                  />
                 </Routes>
               </PrivateLayout>
             }
@@ -73,6 +86,7 @@ export default function Router() {
                 <Routes>
                   <Route path="/" element={<PortfolioLandingPage />} />
                   <Route path="/projects" element={<PortfolioProjectsPage />} />
+                  <Route path="*" element={<NotFoundPage />} />
                 </Routes>
               </PortfolioLayout>
             }

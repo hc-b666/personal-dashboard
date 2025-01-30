@@ -12,13 +12,9 @@ textarea {
 }
 
 .sidebar-link {
-  @apply text-base py-2 px-4 rounded-sm flex items-center gap-1 hover:bg-zinc-50 duration-300;
+  @apply text-base py-2 px-4 rounded-sm flex items-center gap-1 hover:bg-zinc-50 dark:hover:bg-zinc-800 duration-300;
 }
 
 .project-wrap {
   @apply p-5 rounded-lg flex flex-col border-2 hover:shadow-lg border-gray-100 hover:border-gray-300 hover:shadow-gray-300 dark:border-gray-900 dark:hover:border-gray-700 dark:hover:shadow-gray-700 duration-500 cursor-pointer;
-}
-
-.portfolio-base * {
-  @apply duration-300;
 }

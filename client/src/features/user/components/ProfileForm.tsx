@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Button } from "@/common/components/ui/button";
@@ -20,16 +20,17 @@ export default function ProfileForm() {
   const { data } = useFindUserQuery({});
   const [updateInfo] = useUpdateInfoMutation();
 
-  const { register, handleSubmit, reset } = useForm<ProfileFormBody>({
-    defaultValues: useMemo(
-      () => ({
-        firstname: data?.firstName ? data.firstName : "",
-        lastname: data?.lastName ? data.lastName : "",
-        logo: data?.logo ? data.logo : "",
-      }),
-      [data]
-    ),
-  });
+  const { register, handleSubmit, reset } = useForm<ProfileFormBody>();
+
+  useEffect(() => {
+    if (data) {
+      reset({
+        firstname: data.firstName || "",
+        lastname: data.lastName || "",
+        logo: data.logo || "",
+      });
+    }
+  }, [data, reset]);
 
   const onSubmit: SubmitHandler<ProfileFormBody> = async (data) => {
     if (!user) return;
