@@ -2,8 +2,9 @@ import { baseApi } from "@/common/services/api";
 import { ServerResponse } from "@/common/types/api.types";
 
 interface FindUserResponse {
-  firstName: string;
-  lastName: string;
+  firstName: string | null;
+  lastName: string | null;
+  logo: string | null;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -11,6 +12,7 @@ interface FindUserResponse {
 interface UpdateInfoRequest {
   firstname: string;
   lastname: string;
+  logo: string;
 }
 
 export const userApi = baseApi.injectEndpoints({

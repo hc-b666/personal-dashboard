@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Project } from "../types";
-import { formatDate } from "@/common/lib/utils";
+import { formatDate, truncateText } from "@/common/lib/utils";
 import icons from "@/common/icons";
 
 interface Props {
@@ -15,7 +15,11 @@ export default function ProjectCard({ project }: Props) {
         <p className="text-grey text-xs">{formatDate(project.createdAt)}</p>
       </div>
 
-      <p className="text-xs text-grey mb-3">{project.description}</p>
+      {project.description && (
+        <p className="text-xs text-grey mb-3">
+          {truncateText(project.description, 50)}
+        </p>
+      )}
 
       <div className="mt-auto flex flex-wrap items-center gap-2">
         {project.languages.map((lang) => {

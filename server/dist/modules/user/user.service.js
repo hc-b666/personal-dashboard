@@ -30,6 +30,7 @@ class UserService extends service_1.default {
                     select: {
                         firstName: true,
                         lastName: true,
+                        logo: true,
                         createdAt: true,
                         updatedAt: true,
                     },
@@ -47,6 +48,40 @@ class UserService extends service_1.default {
             }
             catch (err) {
                 console.log("Error in UserService.findUser()", err);
+                return {
+                    success: false,
+                    error: err instanceof Error ? err : new Error("Unexpected error occured!"),
+                };
+            }
+        });
+    }
+    getUserInfo(userId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const user = yield this.prisma.user.findUnique({
+                    where: {
+                        id: userId,
+                    },
+                });
+                if (!user) {
+                    return {
+                        success: false,
+                        error: new Error("No user is found with this id"),
+                    };
+                }
+                return {
+                    success: true,
+                    data: {
+                        id: user.id,
+                        firstName: user.firstName,
+                        lastName: user.lastName,
+                        logo: user.logo,
+                        email: user.email,
+                    },
+                };
+            }
+            catch (err) {
+                console.log("Error in UserService.getUserInfo()", err);
                 return {
                     success: false,
                     error: err instanceof Error ? err : new Error("Unexpected error occured!"),
@@ -75,6 +110,7 @@ class UserService extends service_1.default {
                     data: {
                         firstName: dto.firstname ? dto.firstname : null,
                         lastName: dto.lastname ? dto.lastname : null,
+                        logo: dto.logo ? dto.logo : null,
                     },
                 });
                 return {

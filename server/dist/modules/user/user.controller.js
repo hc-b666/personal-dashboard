@@ -32,6 +32,19 @@ class UserController extends controller_1.default {
                 next(err);
             }
         });
+        this.getUserInfo = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
+            try {
+                const userId = this.validateId(req, "userId");
+                const result = yield this.userService.getUserInfo(userId);
+                if (!result.success) {
+                    throw (0, http_errors_1.default)(500, "Something went wrong");
+                }
+                res.status(200).json(result.data);
+            }
+            catch (err) {
+                next(err);
+            }
+        });
         this.updateInfo = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
             try {
                 const userId = req.user.id;

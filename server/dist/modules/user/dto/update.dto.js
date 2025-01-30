@@ -8,4 +8,5 @@ const zod_1 = __importDefault(require("zod"));
 exports.updateUserInfoSchema = zod_1.default.object({
     firstname: zod_1.default.string().max(100).optional(),
     lastname: zod_1.default.string().max(100).optional(),
+    logo: zod_1.default.string().max(32).optional(),
 });

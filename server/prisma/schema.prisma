@@ -12,6 +12,7 @@ model User {
 
   firstName String?
   lastName  String?
+  logo String?
 
   email    String @unique
   password String
